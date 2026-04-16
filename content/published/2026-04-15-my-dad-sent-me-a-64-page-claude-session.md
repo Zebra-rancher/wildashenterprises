@@ -89,6 +89,8 @@ That image at the top of this post is what I imagine it looks like from the insi
 
 The tools are incredible. They're also unintuitive in ways nobody explains. The gap between "using AI" and "using AI well" isn't about being smart. It's about knowing a handful of mechanical facts that change everything.
 
+I'm not an engineer. I'm a master automotive technician. I've spent my career explaining and repairing complex things that engineers built. Turns out that's exactly the skill set this moment needs. You don't need to understand how the engine was designed. You need someone who can pop the hood, tell you what's actually happening, and show you how to work with it.
+
 Context windows are one of them. Projects are another. And sometimes the button that looks like a trap is the safe door.
 
 Dad, if you're reading this: I love you. Set up a Project. Your son has been doing this for a while now and he's trying to save you the headaches he already had. You don't have to learn everything the hard way. That's literally why I exist.
