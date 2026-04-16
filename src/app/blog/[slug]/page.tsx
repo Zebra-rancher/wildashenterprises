@@ -35,8 +35,24 @@ export default async function BlogPost({
   const post = await getPost(slug).catch(() => null);
   if (!post) notFound();
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    author: { "@type": "Person", name: "Travis Decker" },
+    publisher: { "@type": "Organization", name: "Wildash Enterprises" },
+    image: post.image ? `https://wildash.ai${post.image}` : undefined,
+    mainEntityOfPage: `https://wildash.ai/blog/${slug}`,
+  };
+
   return (
     <section className="pt-36 pb-24 md:pt-44 md:pb-32">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <div className="mx-auto max-w-3xl px-6">
         <Link
           href="/blog"

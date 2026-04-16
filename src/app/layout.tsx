@@ -17,6 +17,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://wildash.ai"),
   title: {
     default: "Wildash Enterprises — AI for the Rest of Us",
     template: "%s | Wildash Enterprises",
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     title: "Wildash Enterprises — AI for the Rest of Us",
     description:
       "AI consulting and training for small business owners. Less cognitive load, more leverage.",
-    url: "https://www.wildashenterprises.com",
+    url: "https://wildash.ai",
     siteName: "Wildash Enterprises",
     images: [
       {
@@ -46,6 +47,25 @@ export const metadata: Metadata = {
       "AI consulting and training for small business owners. Less cognitive load, more leverage.",
     images: ["/og-image.png"],
   },
+  alternates: {
+    canonical: "https://wildash.ai",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Wildash Enterprises",
+  url: "https://wildash.ai",
+  description:
+    "AI consulting and training for small business owners. Less cognitive load, more leverage.",
+  founder: {
+    "@type": "Person",
+    name: "Travis Decker",
+    jobTitle: "AI Consultant & Master Automotive Technician",
+  },
+  areaServed: "US",
+  serviceType: ["AI Consulting", "AI Training", "Business Automation"],
 };
 
 export default function RootLayout({
@@ -59,6 +79,10 @@ export default function RootLayout({
       className={`${fraunces.variable} ${jakarta.variable} h-full antialiased`}
     >
       <body className="grain min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />
