@@ -23,6 +23,29 @@ export const metadata: Metadata = {
   },
   description:
     "AI consulting and training for small business owners. Less cognitive load, more leverage. Built by a guy who did it for himself first.",
+  openGraph: {
+    title: "Wildash Enterprises — AI for the Rest of Us",
+    description:
+      "AI consulting and training for small business owners. Less cognitive load, more leverage.",
+    url: "https://www.wildashenterprises.com",
+    siteName: "Wildash Enterprises",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Wildash Enterprises — AI for the Rest of Us",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Wildash Enterprises — AI for the Rest of Us",
+    description:
+      "AI consulting and training for small business owners. Less cognitive load, more leverage.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({
