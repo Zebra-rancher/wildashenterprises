@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { getPost, getSlugs } from "@/lib/blog";
 import { notFound } from "next/navigation";
@@ -56,13 +55,13 @@ export default async function BlogPost({
 
         {post.image && (
           <div className="reveal reveal-delay-2 mt-10 rounded-lg overflow-hidden">
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src={post.image}
               alt={post.title}
               width={1024}
               height={706}
               className="w-full h-auto"
-              priority
             />
           </div>
         )}
