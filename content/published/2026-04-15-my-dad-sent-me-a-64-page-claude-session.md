@@ -5,7 +5,7 @@ draft: true
 image: /images/blog/dad-claude-workbench.jpg
 ---
 
-My dad is building a website. He's been at it with Claude Chat for a few weeks, doing exactly what any motivated person does: fires it up, starts talking, and keeps going.
+My dad is 80 years old and he's building a website. Not handing it off to someone. Building it. He's been at it with Claude Chat for a few weeks, doing exactly what any motivated person does: fires it up, starts talking, and keeps going.
 
 Last week he messaged me frustrated. Claude wasn't erroring out or crashing. It just started saying no. Refusing to help. Repeating itself instead of moving forward.
 
@@ -13,7 +13,7 @@ He sent me the session to look at. It was 64 pages long.
 
 ## The armless robot
 
-I had to explain this without making him feel like an idiot. Because he's not. He figured out how to use a powerful tool and dove in headfirst. That's the right instinct.
+I had to explain this without making him feel like an idiot. Because he's not. He's 80 and he taught himself how to talk to an AI to build something from scratch. Most people half his age won't try that. He figured out how to use a powerful tool and dove in headfirst. That's the right instinct.
 
 But there's a mechanical fact he didn't know about. Most people don't know it until something breaks.
 
@@ -83,9 +83,9 @@ Claude is less like a colleague you have a long relationship with, and more like
 
 ## He's still building
 
-My dad is still at it. He's starting new sessions now, which is progress. He's not using Projects yet. I've told him to. He's going to read this post and probably text me something like "okay okay I'll try it."
+My dad is 80 and he's still at it. He's starting new sessions now, which is progress. He's not using Projects yet. I've told him to. He's going to read this post and probably text me something like "okay okay I'll try it."
 
-That image at the top of this post is what I imagine it looks like from the inside: an older guy at a workbench, soldering iron in hand, the Claude robot standing there, a PCB project on the corkboard. Figuring it out one session at a time.
+That image at the top of this post is what I imagine it looks like from the inside: an older guy at a workbench, soldering iron in hand, the Claude robot standing there, a PCB project on the corkboard. Figuring it out one session at a time. At 80. While most of his peers are trying to figure out their iPad settings.
 
 The tools are incredible. They're also unintuitive in ways nobody explains. The gap between "using AI" and "using AI well" isn't about being smart. It's about knowing a handful of mechanical facts that change everything.
 
@@ -93,6 +93,6 @@ I'm not an engineer. I'm a master automotive technician. I've spent my career ex
 
 Context windows are one of them. Projects are another. And sometimes the button that looks like a trap is the safe door.
 
-Dad, if you're reading this: I love you. Set up a Project. Your son has been doing this for a while now and he's trying to save you the headaches he already had. You don't have to learn everything the hard way. That's literally why I exist.
+Dad, if you're reading this: I love you. You're 80 and you're building a website with AI. That's not normal. That's extraordinary. Now set up a Project. Your son has been doing this for a while now and he's trying to save you the headaches he already had. You don't have to learn everything the hard way. That's literally why I exist.
 
 If you're new to this and something feels off, there's probably a simple explanation. That's exactly what I work on. Reach out.
