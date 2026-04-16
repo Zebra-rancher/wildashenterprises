@@ -5,47 +5,93 @@ export const metadata: Metadata = {
   description: "Things Travis has built or helped build — proof that this stuff actually works.",
 };
 
-const projects = [
+type Status = "Live" | "Prototype" | "Personal";
+type Accent = "gold" | "copper" | "sage";
+
+type Project = {
+  name: string;
+  description: string;
+  tags: string[];
+  status: Status;
+  accent: Accent;
+};
+
+// TODO: tighten copy voice pass — descriptions below are spec-derived placeholders
+const projects: Project[] = [
   {
-    name: "Dave — The AI Executive Assistant",
+    name: "Family Finance Tracker",
     description:
-      "An autonomous AI assistant running on a Mac Mini. Processes email, generates morning briefings, responds to Google reviews, manages a content pipeline. Runs 24/7 with near-zero supervision.",
-    tags: ["Autonomous", "AI Agents", "Mac Mini"],
+      "Personal finance and FIRE planning tool built for real family use. FastAPI, PostgreSQL, Next.js, runs on a home server.",
+    tags: ["Python", "Next.js", "Supabase"],
+    status: "Live",
     accent: "gold",
   },
   {
-    name: "Atomic Auto — AI-Powered Shop Operations",
+    name: "EV Partner Resource Hub",
     description:
-      "A fleet of AI agents handling real auto repair shop operations: CRM queries, customer communication workflows, SEO content generation, and Chrome automation for legacy shop management software.",
-    tags: ["Auto Repair", "AI Fleet", "Automation"],
+      "Tech support and resource site for EV business partners.",
+    tags: ["Next.js", "TypeScript"],
+    status: "Live",
     accent: "copper",
   },
   {
-    name: "Personal OS",
+    name: "Malcolm's Personal Site",
     description:
-      "A personal operating system that ties together task management, project tracking, AI agent orchestration, and multi-business operations into a single coherent system. The backbone everything else runs on.",
-    tags: ["Orchestration", "Productivity", "System Design"],
+      "Personal site built with and for a teenager learning to put his work on the web.",
+    tags: ["Next.js", "Vercel"],
+    status: "Live",
     accent: "sage",
   },
   {
-    name: "8+ Websites & Apps",
+    name: "Olive's Bug Guide",
     description:
-      "A portfolio of side ventures — each with its own web presence, built and managed with AI assistance. From concept to deployment, often in a single sitting.",
-    tags: ["Next.js", "Web Dev", "Rapid Build"],
+      "Portland native bug identification guide, built as a family AI project. 23 bugs, all local.",
+    tags: ["Next.js", "Vercel"],
+    status: "Live",
+    accent: "gold",
+  },
+  {
+    name: "The Game Master",
+    description:
+      "Drop any book in. Play inside the story as a D&D campaign with persistent NPCs and consequences. Enhanced with a voice skill from GitHub.",
+    tags: ["Claude Code", "RAG", "ChromaDB"],
+    status: "Personal",
+    accent: "copper",
+  },
+  {
+    name: "Family Counseling Space",
+    description:
+      "A shared Claude Project used as a persistent space for family conversation and reflection.",
+    tags: ["Claude Projects"],
+    status: "Personal",
+    accent: "sage",
+  },
+  {
+    name: "AquaTrack",
+    description:
+      "Crowdsourced water quality monitoring for outdoor swimmers. Scan a test strip, pin results on a community map.",
+    tags: ["React Native", "Supabase", "Mapbox"],
+    status: "Prototype",
     accent: "gold",
   },
 ];
 
-const accentColors: Record<string, string> = {
+const accentColors: Record<Accent, string> = {
   gold: "text-gold border-gold/20",
   copper: "text-copper border-copper/20",
   sage: "text-sage border-sage/20",
 };
 
-const tagColors: Record<string, string> = {
+const tagColors: Record<Accent, string> = {
   gold: "text-gold/70",
   copper: "text-copper/70",
   sage: "text-sage/70",
+};
+
+const statusStyles: Record<Status, string> = {
+  Live: "text-sage border-sage/40",
+  Prototype: "text-copper border-copper/40",
+  Personal: "text-parchment-dim border-stone-700",
 };
 
 export default function ProjectsPage() {
@@ -68,23 +114,28 @@ export default function ProjectsPage() {
         <div className="mt-16 grid md:grid-cols-2 gap-6">
           {projects.map((project, i) => (
             <article
-              key={i}
-              className={`reveal reveal-delay-${i + 1} border ${accentColors[project.accent]} bg-stone-950 p-8 md:p-10 group hover:bg-stone-900 transition-colors duration-500`}
+              key={project.name}
+              className={`reveal reveal-delay-${(i % 5) + 1} border ${accentColors[project.accent]} bg-stone-950 p-8 md:p-10 group hover:bg-stone-900 transition-colors duration-500`}
             >
-              <div className="flex flex-wrap gap-2 mb-6">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className={`text-xs tracking-wide uppercase ${tagColors[project.accent]}`}
-                  >
-                    {tag}
-                  </span>
-                ))}
+              <div className="flex items-start justify-between gap-4 mb-6">
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className={`text-xs tracking-wide uppercase ${tagColors[project.accent]}`}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <span
+                  className={`shrink-0 text-xs tracking-[0.2em] uppercase border px-3 py-1 ${statusStyles[project.status]}`}
+                >
+                  {project.status}
+                </span>
               </div>
               <h2
-                className={`font-display text-2xl md:text-3xl leading-tight ${
-                  accentColors[project.accent].split(" ")[0]
-                } group-hover:brightness-125 transition-all duration-500`}
+                className={`font-display text-2xl md:text-3xl leading-tight ${accentColors[project.accent].split(" ")[0]} group-hover:brightness-125 transition-all duration-500`}
               >
                 {project.name}
               </h2>
