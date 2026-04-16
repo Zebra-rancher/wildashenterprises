@@ -7,7 +7,7 @@ image: /images/blog/dad-claude-workbench.jpg
 
 My dad is building a website. He's been at it with Claude Chat for a few weeks, doing exactly what any motivated person does: fires it up, starts talking, and keeps going.
 
-Last week he messaged me frustrated. Claude wasn't erroring out or crashing. It just started saying no. Refusing to help. Giving vague non-answers. Repeating itself instead of moving forward.
+Last week he messaged me frustrated. Claude wasn't erroring out or crashing. It just started saying no. Refusing to help. Repeating itself instead of moving forward.
 
 He sent me the session to look at. It was 64 pages long.
 
