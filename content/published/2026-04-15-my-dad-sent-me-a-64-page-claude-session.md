@@ -93,6 +93,8 @@ I'm not an engineer. I'm a master automotive technician. I've spent my career ex
 
 Context windows are one of them. Projects are another. And sometimes the button that looks like a trap is the safe door.
 
-Dad, if you're reading this: I love you. You're 80 and you're building a website with AI. That's not normal. That's extraordinary. Now set up a Project. Your son has been doing this for a while now and he's trying to save you the headaches he already had. You don't have to learn everything the hard way. That's literally why I exist.
+In 1982, an IBM PC fell off a truck and my dad brought it home. I was seven or eight. That's how I learned DOS. I spent my entire youth on that machine and the ones that came after it. Every bit of what I do now traces back to that moment — a kid at a keyboard because his dad brought home a computer most families didn't have.
+
+Dad, if you're reading this: I love you. You're 80 and you're building a website with AI. That's not normal. That's extraordinary. But it's not surprising. You're the reason I'm here doing any of this in the first place. Now set up a Project. Your son has been doing this for a while now and he's trying to save you the headaches he already had. You don't have to learn everything the hard way. That's literally why I exist.
 
 If you're new to this and something feels off, there's probably a simple explanation. That's exactly what I work on. Reach out.
