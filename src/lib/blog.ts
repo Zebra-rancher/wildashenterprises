@@ -33,8 +33,8 @@ export async function getPost(slug: string): Promise<Post> {
     slug,
     title: data.title ?? slug,
     date: data.date ? new Date(data.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" }) : "",
-    image: data.image,
-    excerpt: plainExcerpt.slice(0, 200),
+    image: data.hero ?? data.image,
+    excerpt: data.excerpt ?? plainExcerpt.slice(0, 200),
     content: result.toString(),
   };
 }
