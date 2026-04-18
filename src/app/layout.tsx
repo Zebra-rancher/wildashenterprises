@@ -19,30 +19,30 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL("https://wildash.ai"),
   title: {
-    default: "Wildash Enterprises — AI for the Rest of Us",
-    template: "%s | Wildash Enterprises",
+    default: "Wildash — AI for the Rest of Us",
+    template: "%s | Wildash",
   },
   description:
     "AI consulting and training for small business owners. Less cognitive load, more leverage. Built by a guy who did it for himself first.",
   openGraph: {
-    title: "Wildash Enterprises — AI for the Rest of Us",
+    title: "Wildash — AI for the Rest of Us",
     description:
       "AI consulting and training for small business owners. Less cognitive load, more leverage.",
     url: "https://wildash.ai",
-    siteName: "Wildash Enterprises",
+    siteName: "Wildash",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Wildash Enterprises — AI for the Rest of Us",
+        alt: "Wildash — AI for the Rest of Us",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Wildash Enterprises — AI for the Rest of Us",
+    title: "Wildash — AI for the Rest of Us",
     description:
       "AI consulting and training for small business owners. Less cognitive load, more leverage.",
     images: ["/og-image.png"],
