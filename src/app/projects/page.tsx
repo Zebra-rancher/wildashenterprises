@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { getProjectSlugs } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -10,6 +12,7 @@ type Accent = "gold" | "copper" | "sage";
 
 type Project = {
   name: string;
+  slug?: string;
   description: string;
   tags: string[];
   status: Status;
@@ -20,6 +23,7 @@ type Project = {
 const projects: Project[] = [
   {
     name: "Family Finance Tracker",
+    slug: "finapp",
     description:
       "Personal finance and FIRE planning tool built for real family use. FastAPI, PostgreSQL, Next.js, runs on a home server.",
     tags: ["Python", "Next.js", "Supabase"],
@@ -28,6 +32,7 @@ const projects: Project[] = [
   },
   {
     name: "EV Partner Resource Hub",
+    slug: "ev-partners",
     description:
       "Tech support and resource site for EV business partners.",
     tags: ["Next.js", "TypeScript"],
@@ -36,6 +41,7 @@ const projects: Project[] = [
   },
   {
     name: "Malcolm's Personal Site",
+    slug: "malcolm-wildash",
     description:
       "Personal site built with and for a teenager learning to put his work on the web.",
     tags: ["Next.js", "Vercel"],
@@ -44,6 +50,7 @@ const projects: Project[] = [
   },
   {
     name: "Olive's Bug Guide",
+    slug: "olives-bugs",
     description:
       "Portland native bug identification guide, built as a family AI project. 23 bugs, all local.",
     tags: ["Next.js", "Vercel"],
@@ -52,6 +59,7 @@ const projects: Project[] = [
   },
   {
     name: "The Game Master",
+    slug: "game-master",
     description:
       "Drop any book in. Play inside the story as a D&D campaign with persistent NPCs and consequences. Enhanced with a voice skill from GitHub.",
     tags: ["Claude Code", "RAG", "ChromaDB"],
@@ -60,21 +68,16 @@ const projects: Project[] = [
   },
   {
     name: "Family Counseling Space",
+    slug: "family-counseling",
     description:
       "A shared Claude Project used as a persistent space for family conversation and reflection.",
     tags: ["Claude Projects"],
     status: "Personal",
     accent: "sage",
   },
-  {
-    name: "AquaTrack",
-    description:
-      "Crowdsourced water quality monitoring for outdoor swimmers. Scan a test strip, pin results on a community map.",
-    tags: ["React Native", "Supabase", "Mapbox"],
-    status: "Prototype",
-    accent: "gold",
-  },
 ];
+
+const publishedProjectSlugs = new Set(getProjectSlugs());
 
 const accentColors: Record<Accent, string> = {
   gold: "text-gold border-gold/20",
@@ -112,38 +115,58 @@ export default function ProjectsPage() {
 
         {/* Projects grid */}
         <div className="mt-16 grid md:grid-cols-2 gap-6">
-          {projects.map((project, i) => (
-            <article
-              key={project.name}
-              className={`reveal reveal-delay-${(i % 5) + 1} border ${accentColors[project.accent]} bg-stone-950 p-8 md:p-10 group hover:bg-stone-900 transition-colors duration-500`}
-            >
-              <div className="flex items-start justify-between gap-4 mb-6">
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className={`text-xs tracking-wide uppercase ${tagColors[project.accent]}`}
-                    >
-                      {tag}
-                    </span>
-                  ))}
+          {projects.map((project, i) => {
+            const isLinked = Boolean(project.slug && publishedProjectSlugs.has(project.slug));
+            const baseClasses = `reveal reveal-delay-${(i % 5) + 1} border ${accentColors[project.accent]} bg-stone-950 p-8 md:p-10 group transition-colors duration-500 block`;
+            const interactiveClasses = isLinked ? " hover:bg-stone-900" : "";
+            const body = (
+              <>
+                <div className="flex items-start justify-between gap-4 mb-6">
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className={`text-xs tracking-wide uppercase ${tagColors[project.accent]}`}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <span
+                    className={`shrink-0 text-xs tracking-[0.2em] uppercase border px-3 py-1 ${statusStyles[project.status]}`}
+                  >
+                    {project.status}
+                  </span>
                 </div>
-                <span
-                  className={`shrink-0 text-xs tracking-[0.2em] uppercase border px-3 py-1 ${statusStyles[project.status]}`}
+                <h2
+                  className={`font-display text-2xl md:text-3xl leading-tight ${accentColors[project.accent].split(" ")[0]} ${isLinked ? "group-hover:brightness-125" : ""} transition-all duration-500`}
                 >
-                  {project.status}
-                </span>
-              </div>
-              <h2
-                className={`font-display text-2xl md:text-3xl leading-tight ${accentColors[project.accent].split(" ")[0]} group-hover:brightness-125 transition-all duration-500`}
-              >
-                {project.name}
-              </h2>
-              <p className="text-parchment-dim mt-4 leading-relaxed">
-                {project.description}
-              </p>
-            </article>
-          ))}
+                  {project.name}
+                </h2>
+                <p className="text-parchment-dim mt-4 leading-relaxed">
+                  {project.description}
+                </p>
+              </>
+            );
+
+            if (isLinked && project.slug) {
+              return (
+                <Link
+                  key={project.name}
+                  href={`/projects/${project.slug}`}
+                  className={baseClasses + interactiveClasses}
+                >
+                  {body}
+                </Link>
+              );
+            }
+
+            return (
+              <article key={project.name} className={baseClasses}>
+                {body}
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

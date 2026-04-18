@@ -37,6 +37,16 @@ const categories = [
         description: "AI News & Strategy Daily on YouTube",
         url: "https://www.youtube.com/@NateBJones",
       },
+      {
+        title: "The MIT Monk",
+        description: "AI learning, self-improvement, and entrepreneurship from Sandeep Swadia",
+        url: "https://www.youtube.com/@theMITmonk",
+      },
+      {
+        title: "Peter Yang",
+        description: "Practical AI tutorials and interviews with leaders in the creator economy",
+        url: "https://www.youtube.com/@PeterYangYT",
+      },
     ],
   },
   {

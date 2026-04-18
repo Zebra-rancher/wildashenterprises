@@ -52,8 +52,6 @@ This is a one-time dashboard-only step (the API can't initiate the GitHub OAuth 
 
 ## Known cleanup
 
-- **`wrangler.json` is stale.** It points at `.open-next/worker.js` from a prior attempt to deploy via Cloudflare Workers + `@opennextjs/cloudflare` (commit `e7e55a7`). That path was reverted (`64993f9`) in favor of static export to Pages. The file is unused and can be deleted unless manual Wrangler deploys reference the `name` field.
-- **`eslint.config.mjs` doesn't ignore `.open-next/`.** `npm run lint` exits non-zero because the leftover Cloudflare Workers build output contains a `require()` call. Add `".open-next/**"` to `globalIgnores` in the ESLint config to fix.
 - **`scripts/`** is present but untracked in git — unclear what's in it.
 
 ## Stack
@@ -61,28 +59,34 @@ This is a one-time dashboard-only step (the API can't initiate the GitHub OAuth 
 - Next.js 16, React 19, TypeScript 5
 - Tailwind CSS v4 (CSS custom properties, `@theme inline`)
 - Fonts: Fraunces (display) + Plus Jakarta Sans (body) via `next/font/google`
-- Content: blog posts as markdown under `content/blog/`, rendered via `remark` + `remark-html`, parsed with `gray-matter`
+- Content: markdown under `content/published/` (blog posts) and `content/published/start/` (education articles) and `content/projects/` (project detail pages), rendered via `remark` + `remark-html`, parsed with `gray-matter`
 
 ## Project structure
 
 ```
 src/
   app/
-    blog/         blog index + [slug] post pages
-    start/        beginner education hub (12 stubbed article cards)
-    projects/    projects portfolio (7 cards with status badges)
-    links/       link hub
-    contact/     contact form
-    layout.tsx  root layout + Nav + Footer + JSON-LD schema
-    page.tsx    home
-    globals.css Tailwind v4 theme + reveal animation utilities
+    blog/          blog index + [slug] post pages
+    start/         education hub + [slug] article pages
+    projects/      projects portfolio + [slug] detail pages
+    links/         link hub
+    contact/       contact form
+    layout.tsx     root layout + Nav + Footer + JSON-LD schema
+    page.tsx       home
+    globals.css    Tailwind v4 theme + reveal animation utilities
   components/
-    Nav.tsx     client-side nav with mobile menu
+    Nav.tsx        client-side nav with mobile menu
     Footer.tsx
-content/blog/   markdown blog posts
+  lib/
+    blog.ts        blog post loader
+    content.ts     /start article + /projects page loader
+content/
+  published/       blog markdown + start/ subfolder for education articles
+  projects/        project detail markdown (optional, pre-renders on build)
+  drafts/          work-in-progress articles (not rendered)
 docs/superpowers/
-  specs/        design specs
-  plans/        implementation plans
+  specs/           design specs
+  plans/           implementation plans
 ```
 
 ## Design system

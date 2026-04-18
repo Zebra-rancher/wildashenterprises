@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { getStartSlugs } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Start Learning Here",
@@ -9,6 +10,8 @@ export const metadata: Metadata = {
 
 type Track = "Understanding AI" | "Building Things";
 type CardStatus = "coming-soon" | "read";
+
+const publishedSlugs = new Set(getStartSlugs());
 
 type StartCard = {
   slug: string;
@@ -22,7 +25,7 @@ type StartCard = {
 // visible as the reader scrolls, not siloed into two separate lists.
 const cards: StartCard[] = [
   {
-    slug: "what-is-happening",
+    slug: "what-is-actually-happening",
     title: "What Is Actually Happening",
     description: "AI isn't searching the web. Here's what it's actually doing.",
     track: "Understanding AI",
@@ -163,32 +166,52 @@ export default function StartPage() {
 
         {/* Card grid */}
         <div className="mt-16 grid md:grid-cols-2 gap-6">
-          {cards.map((card, i) => (
-            <Link
-              key={card.slug}
-              href={`/start/${card.slug}`}
-              className={`reveal reveal-delay-${(i % 5) + 1} border ${trackBorder[card.track]} bg-stone-950 p-8 md:p-10 group hover:bg-stone-900 transition-colors duration-500 flex flex-col`}
-            >
-              <span
-                className={`self-start text-xs tracking-[0.2em] uppercase border px-3 py-1 ${trackBadge[card.track]}`}
-              >
-                {card.track}
-              </span>
-              <h2
-                className={`font-display text-2xl md:text-3xl leading-tight mt-6 ${trackTitle[card.track]} group-hover:brightness-125 transition-all duration-500`}
-              >
-                {card.title}
-              </h2>
-              <p className="text-parchment-dim mt-3 leading-relaxed">
-                {card.description}
-              </p>
-              <span
-                className={`self-start mt-6 text-xs tracking-[0.2em] uppercase border px-3 py-1 ${statusBadge[card.status]}`}
-              >
-                {statusLabel[card.status]}
-              </span>
-            </Link>
-          ))}
+          {cards.map((card, i) => {
+            const isPublished = publishedSlugs.has(card.slug);
+            const effectiveStatus: CardStatus = isPublished ? "read" : card.status;
+            const baseClasses = `reveal reveal-delay-${(i % 5) + 1} border ${trackBorder[card.track]} bg-stone-950 p-8 md:p-10 group transition-colors duration-500 flex flex-col`;
+            const interactiveClasses = isPublished ? " hover:bg-stone-900" : "";
+            const body = (
+              <>
+                <span
+                  className={`self-start text-xs tracking-[0.2em] uppercase border px-3 py-1 ${trackBadge[card.track]}`}
+                >
+                  {card.track}
+                </span>
+                <h2
+                  className={`font-display text-2xl md:text-3xl leading-tight mt-6 ${trackTitle[card.track]} ${isPublished ? "group-hover:brightness-125" : ""} transition-all duration-500`}
+                >
+                  {card.title}
+                </h2>
+                <p className="text-parchment-dim mt-3 leading-relaxed">
+                  {card.description}
+                </p>
+                <span
+                  className={`self-start mt-6 text-xs tracking-[0.2em] uppercase border px-3 py-1 ${statusBadge[effectiveStatus]}`}
+                >
+                  {statusLabel[effectiveStatus]}
+                </span>
+              </>
+            );
+
+            if (isPublished) {
+              return (
+                <Link
+                  key={card.slug}
+                  href={`/start/${card.slug}`}
+                  className={baseClasses + interactiveClasses}
+                >
+                  {body}
+                </Link>
+              );
+            }
+
+            return (
+              <div key={card.slug} className={baseClasses}>
+                {body}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

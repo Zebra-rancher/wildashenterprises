@@ -33,8 +33,8 @@ export default function Home() {
         <div className="absolute bottom-1/4 right-0 w-72 h-72 bg-copper/5 rounded-full blur-[100px]" />
 
         <div className="relative mx-auto max-w-6xl px-6 pt-32 pb-24">
-          <p className="reveal text-sm tracking-[0.25em] uppercase text-gold mb-6">
-            Wildash Enterprises
+          <p className="reveal text-sm tracking-[0.25em] uppercase text-gold mb-6" aria-hidden="true">
+            &nbsp;
           </p>
 
           <h1 className="reveal reveal-delay-1 font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] tracking-tight max-w-4xl">
