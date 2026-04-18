@@ -25,7 +25,7 @@ export function Nav() {
           href="/"
           className="font-display text-xl tracking-tight text-parchment hover:text-gold transition-colors duration-300"
         >
-          wildash<span className="text-gold">.</span>
+          wildash
         </Link>
 
         {/* Desktop nav */}
