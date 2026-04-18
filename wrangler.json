@@ -1,7 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "wildashenterprises",
-  "account_id": "f4b09f8bd03474fa0fcd492708ba2e0c",
   "pages_build_output_dir": "out",
   "compatibility_date": "2026-04-13",
   "compatibility_flags": ["nodejs_compat"]
