@@ -3,7 +3,7 @@ title: "GitHub Basics"
 slug: github-basics
 track: "Building Things"
 status: draft
-word_count: 731
+word_count: 801
 sources:
   - https://docs.github.com/en/get-started/start-your-journey/about-github-and-git
   - https://docs.github.com/en/get-started/start-your-journey/hello-world
@@ -25,6 +25,10 @@ You don't, in the sense of writing software. You do, in the sense that GitHub is
 Picture the three-ring binder behind your service counter. Every customer has a tab. Inside each tab are the invoices, the inspection sheets, the notes from last visit, the photos the tech stapled to the paperwork. That binder is the memory of the shop. Lose it, and you lose years.
 
 A GitHub repository is the same idea for a digital project. A repo is a folder that holds every file related to one piece of work, like a website or an automation script you built with Claude. All of it in one tab, with a history attached.
+
+## The rewind button
+
+The technical name for what GitHub does is version control. Strip the jargon and it's a rewind button for your files. Every time you save a change, a new frame gets added to the tape. If today's change breaks something, you hit rewind and the file goes back to how it looked yesterday, last week, last month. Nothing is lost. Nothing is final. That alone is worth the account.
 
 ## What a commit is
 
