@@ -7,7 +7,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 <!-- BEGIN:cloudflare-account-rules -->
 # Cloudflare account — wildash lives on `f4b09f…2e0c`, not opengrindr
 
-The `wildashenterprises` Cloudflare Pages project lives under account ID `f4b09f8bd03474fa0fcd492708ba2e0c`.
+The Cloudflare Pages project for this repo is named `wildashenterprises-site` and lives under account ID `f4b09f8bd03474fa0fcd492708ba2e0c`. Git integration is connected, so pushes to `main` auto-deploy.
 
 The `opengrindr2026@proton.me` / `d5c43f13f8e5bd4952aa65763f712015` account is **unrelated**. Do not conflate them. Do not propose moving the Pages project. Do not accept a `CLOUDFLARE_API_TOKEN` scoped to opengrindr as sufficient for wildash deploys.
 

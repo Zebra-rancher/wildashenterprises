@@ -23,32 +23,24 @@ npm run build
 
 - **Platform:** Cloudflare Pages (static assets, no edge compute)
 - **Cloudflare account ID:** `f4b09f8bd03474fa0fcd492708ba2e0c`
-- **Pages project name:** `wildashenterprises`
-- **Preview hostname:** `wildashenterprises.pages.dev`
+- **Pages project name:** `wildashenterprises-site` (the old `wildashenterprises` project was deleted during a Git-integration rebuild on 2026-04-17; names cannot be reused through the API for recreating a project at the original name, so the site was re-provisioned under a new name)
+- **Preview hostname:** `wildashenterprises-site.pages.dev`
 - **Production domains:** `wildash.ai`, `www.wildash.ai`, `wildashenterprises.com`, `www.wildashenterprises.com`
-- **Production branch (configured):** `main`
-- **Git integration:** ⚠️ **Not connected** (as of 2026-04-16). `source: null` on the project — pushes to `main` do NOT auto-deploy. All 16+ prior deploys were manual Wrangler uploads.
-- **Build command (when Git integration is set up):** `npm run build`
+- **Production branch:** `main`
+- **Git integration:** ✅ connected to `Zebra-rancher/wildashenterprises`. Pushes to `main` auto-build and deploy.
+- **Build command:** `npm run build`
 - **Build output directory:** `out`
 
-### Current workflow — manual Wrangler deploy
+### Manual Wrangler deploy (fallback)
+
+Git integration handles normal deploys. For an out-of-band deploy:
 
 ```bash
 npm run build
-CLOUDFLARE_API_TOKEN=<pages-token> npx wrangler pages deploy out --project-name=wildashenterprises
+CLOUDFLARE_API_TOKEN=<pages-token> npx wrangler pages deploy out --project-name=wildashenterprises-site
 ```
 
 The token must be scoped to the `f4b09f8bd03474fa0fcd492708ba2e0c` account with `Pages: Edit` permissions. Create one at https://dash.cloudflare.com/profile/api-tokens.
-
-### Recommended — wire up Git integration
-
-This is a one-time dashboard-only step (the API can't initiate the GitHub OAuth flow):
-
-1. https://dash.cloudflare.com → **Workers & Pages** → **wildashenterprises** → **Settings** → **Builds & deployments** → **Connect to Git**
-2. Authorize Cloudflare's GitHub app and pick `Zebra-rancher/wildashenterprises`
-3. Branch: `main`. Build command: `npm run build`. Build output directory: `out`.
-4. Save. Next push to `main` will build and deploy automatically.
-5. Revoke any manual-deploy API tokens afterward — they're no longer needed.
 
 ## Known cleanup
 
